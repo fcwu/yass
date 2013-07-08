@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml">  
+    <head>  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
+        <meta name="description" content="a depot implement with Django"/>  
+        <meta name="keywords" content="django,depot" />  
+        <meta name="author" content="Holbrook(http://hi.csdn.net/space-2668.html)" />  
+        <title>{% block title %} 標題 {% endblock %}</title>  
+        <link href="/static/css/bootstrap.css" rel="stylesheet">
+        <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+        <script src="/static/js/jquery-1.10.1.min.js"></script>  
+        {% block js %}  
+            <!--這裡插入具體頁面引用的js庫，或者js代碼-->  
+        {% endblock %}  
+        <script>  
+            $(function () {  
+                //這裡編寫base界面的on_ready代碼  
+                  
+                {% block on_ready %}  
+                $('a.btn[productid]').bind("click",function(){  
+                    alert($(this).attr("productid"));             
+                });
+                {% endblock %}  
+            });  
+        </script>  
+    </head>  
+    <body>  
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <div class="container">
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="brand" href="#">Project name</a>
+              <div class="nav-collapse collapse">
+                <ul class="nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Action</a></li>
+                      <li><a href="{% url depotapp.views.list_product_pretty %}">Manage Product</a></li>
+                      <li><a href="{% url depotapp.views.store_view %}">Store</a></li>
+                      <li><a href="{% url depotapp.views.view_cart %}">Cart</a></li>
+                      <li class="divider"></li>
+                      <li class="nav-header">Nav header</li>
+                      <li><a href="#">Separated link</a></li>
+                      <li><a href="#">One more separated link</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <form class="navbar-form pull-right">
+                  <input class="span2" type="text" placeholder="Email">
+                  <input class="span2" type="password" placeholder="Password">
+                  <button type="submit" class="btn">Sign in</button>
+                </form>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>
+        <div class="container">  
+            {% block content %}   
+            內容  
+            {% endblock %}  
+        </div>  
+        <script src="/static/js/jquery-1.10.1.js"></script>
+        <script src="/static/js/bootstrap.js"></script>
+    </body>  
+</html>  

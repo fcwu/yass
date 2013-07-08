@@ -1,0 +1,25 @@
+Environment
+====
+sudo apt-get install python-setuptools sqlite3 libsqlite0-dev libsqlite3-dev libssl-dev git
+sudo easy_install virtualenv
+pythonbrew install 2.7.3
+pythonbrew swtich 2.7.3
+pip install django
+pip install djangorestframework 
+pip install pysqlite
+
+FQA
+====
+Q: httplib.HTTPSConnection returns AttributeError: 'module' object has no attribute 'HTTPSConnection'
+A: If the 'openssl-devel' package is missing from your system before you compiled python, httplib won't have HTTPSconnection. 
+   Install openssl-devel, then install python2.7.3 via pythonbrew
+
+Project Init
+====
+django-admin startproject yass
+cd yass
+(?) git clone https://github.com/madhusudancs/django-groundwork
+
+Start
+====
+./manager.py runserver
