@@ -1,6 +1,7 @@
 Environment
 ====
 sudo apt-get install python-setuptools sqlite3 libsqlite0-dev libsqlite3-dev libssl-dev git
+sudo apt-get install mediainfo
 sudo easy_install virtualenv
 pythonbrew install 2.7.3
 pythonbrew swtich 2.7.3
@@ -8,7 +9,7 @@ pip install django
 pip install djangorestframework 
 pip install pysqlite
 
-FQA
+FAQ
 ====
 Q: httplib.HTTPSConnection returns AttributeError: 'module' object has no attribute 'HTTPSConnection'
 A: If the 'openssl-devel' package is missing from your system before you compiled python, httplib won't have HTTPSconnection. 
@@ -22,4 +23,14 @@ cd yass
 
 Start
 ====
+mkdir db
+./manager.py syncdb
+./manager.py mediascan
 ./manager.py runserver
+
+DB manipulate
+====
+./manager.py sqlflush <app, ...>  # sql to delete data
+./manager.py sqlclear <app, ...>  # sql to drop tables
+./manager.py dumpdata <app, ...>  # data
+./manager.py dumpdata <app, ...> | python -mjson.tool # data
